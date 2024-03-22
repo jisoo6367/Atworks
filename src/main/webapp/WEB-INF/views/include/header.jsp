@@ -12,13 +12,13 @@
 		</div>
 		<nav>
 			<ul>
-				<li class="before_sign"><a href="/user/list">게시판</a></li>
+				<li class="before_sign"><a href="/member/list">유저 게시판</a></li>
 			</ul>
 		</nav>
 		<div class="util_menu">
             <ul>
 				<li class="before_sign"><a href="#">로그인</a></li>
-				<li class="before_sign"><a href="/register/onLoad">회원가입</a></li>
+				<li class="before_sign"><a href="/member/register">회원가입</a></li>
             </ul>
         </div>
 	</header>

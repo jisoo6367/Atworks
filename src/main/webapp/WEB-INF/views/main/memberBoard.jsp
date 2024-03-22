@@ -15,11 +15,16 @@
  
 <section class="main_wrap">
 	<main class="main">
+		<br>
 		<h3>유저 게시판</h3>
+		<br>
+		
+		<form id="frmSendValue">
 		<table>
 			<c:choose>
 			<c:when test="${memberList ne null}">
 				<tr>
+					<th><input type="checkbox" id="allcheck" onclick="allCheck()"></th>
 					<th>유저번호</th>
 					<th>이름</th>
 					<th>비밀번호</th>
@@ -29,7 +34,8 @@
 				</tr>
 				<c:forEach var="member" items="${memberList}">
 				<tr class="moveDetail" data-userid="${member.userId }">
-					<input type="hidden" id=userId value="${member.userId }">
+					<td style="text-align: center;" onclick="event.stopPropagation()" >
+						<input type="checkbox" id="rowcheck" value="${member.userId } "></td>
 					<td style="text-align: center;"><c:out value="${member.userId }"/></td>
 					<td style="text-align: center;"><c:out value="${member.userNm }"/></td>
 					<td style="text-align: center;" ><c:out value="${member.passWd }"/></td>
@@ -44,7 +50,10 @@
 			</c:otherwise>
 			</c:choose>
 			
+			
 		</table>
+		<button type="button" id="btnToDelete">삭제</button> 
+		</form>
 
 
 
@@ -55,14 +64,71 @@
 
 
 <script>
-//var userId = '<c:out value="${member.userId }"/>';
+var frmSendValue = $("#frmSendValue");
 
+
+// 특정 회원 상세 정보 detail로 
 $(".moveDetail").on("click", function(){
 	var userId = $(this).data("userid");
-	//var userId = $("#userId").val();
-	console.log(userId);
+	var url = "/member/detail?userId=" + encodeURIComponent(userId);
+	
+	window.location.href = url;
+});
+
+
+//체크박스 전체선택
+function allCheck(){
+	
+    var checkboxes = document.querySelectorAll('input[id=rowcheck]');
+    var allCheck = document.getElementById('allcheck');
+    
+	for( i=0; i< checkboxes.length; i++){
+		checkboxes[i].checked = allCheck.checked;
+	}
+}
+
+
+//체크된 회원 삭제
+$("#btnToDelete").on("click", function(){
+	
+    var selectedUserIds = [];
+    
+    // 체크된 체크박스를 찾아서 값을 배열에 저장
+    $(".moveDetail input[type=checkbox]:checked").each(function() {
+        selectedUserIds.push($(this).val().trim());
+    });
+    
+    console.log(selectedUserIds);
+    
+    // AJAX 요청
+    $.ajax({
+        type: "POST",
+        url: "/member/delete",
+        data: JSON.stringify({ selectedUserIds: selectedUserIds }), // 데이터 전송
+        contentType: "application/json",
+        success: function(response) {
+            console.log("서버 응답:", response);
+             if(response !== null && response !== 0) {
+            	alert("삭제 성공");
+            	document.location.reload();
+            } 
+        },
+        error: function(xhr, status, error) {
+            console.error("에러:", error);
+            // 에러 발생 시 실행할 코드 작성
+        }
+    });
+
 	
 });
+	
+
+
+
+
+
+
+
 
 </script>
 

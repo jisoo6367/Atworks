@@ -23,13 +23,36 @@ public class MemberServiceImpl implements MemberService{
 		memberMapper.insertMember(member);
 		return member.getNick();
 	}
-	
+
 	@Override
 	public List<SampleVO> getMemberList() throws Exception {
 		List<SampleVO> memberList = memberMapper.selectMemberBoardList();
 		System.out.println("서비스임플에서 memberList : " + memberList);
 		
 		return memberList;
+	}
+
+	@Override
+	public SampleVO getMember(int user_id) {
+		
+		SampleVO member = memberMapper.selectMember(user_id);
+		System.out.println("서비스임플에서 member정보 : "+ member);
+		
+		return member;
+	}
+
+	@Override
+	public int modifyMember(SampleVO member) {
+		int result = memberMapper.updateMember(member);
+		
+		return result;
+	}
+	
+
+	@Override
+	public int deleteMember(List<Integer> member) {
+		int result = memberMapper.deleteMember(member);
+		return result;
 	}
 
 	

@@ -18,12 +18,36 @@
 
 
 <!-- 모든 리스트 가져오기 -->
-
 	<select id="selectMemberBoardList" resultType="com.demo.ant.sample.vo.SampleVO">
 		SELECT USER_ID, USER_NM, PASSWD, NICK, PHONE, EMAIL, GRADE
 		FROM atworks_user
 		ORDER BY USER_ID DESC
 	</select>
+	
+	
+<!-- userId로 특정 리스트 가져오기 -->
+	<select id="selectMember" resultType="com.demo.ant.sample.vo.SampleVO" parameterType="int">
+		SELECT USER_ID, USER_NM, PASSWD, NICK, PHONE, EMAIL, GRADE
+		FROM atworks_user
+		WHERE user_id = #{user_id}
+	</select>
 
+	
+<!-- 회원 정보 수정 -->
+	<update id="updateMember" parameterType="com.demo.ant.sample.vo.SampleVO">
+		UPDATE atworks_user
+		SET passwd = #{passWd}
+		WHERE user_id = #{userId}
+	</update>
+
+
+<!-- 회원 정보 다중 삭제 -->
+    <delete id="deleteMember" parameterType="map">
+        DELETE FROM atworks_user WHERE user_id IN (
+        <foreach collection="list" item="selectedUserIds" separator=",">
+        #{selectedUserIds}
+        </foreach>
+        )
+    </delete>
 
 </mapper>

@@ -12,4 +12,9 @@ public interface MemberMapper {
 	
 	public List<SampleVO> selectMemberBoardList();
 	
+	public SampleVO selectMember(int user_id);
+	
+	public int updateMember(SampleVO member);
+
+	public int deleteMember(List<Integer> member);
 }

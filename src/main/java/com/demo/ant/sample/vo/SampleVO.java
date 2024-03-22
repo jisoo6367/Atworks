@@ -1,18 +1,33 @@
 package com.demo.ant.sample.vo;
 
+import java.util.List;
+
 public class SampleVO {
 
-	private 	String	userId;
+	private 	int userId;
 	private		String	userNm;
 	private		String	passWd;
 	private		String	nick;
 	private		String	email;
 	private		String	phone;
 	
-	public String getUserId() {
+	private List<Integer> selectedUserIds;
+	
+
+	
+	public List<Integer> getSelectedUserIds() {
+		return selectedUserIds;
+	}
+	public void setSelectedUserIds(List<Integer> selectedUserIds) {
+		this.selectedUserIds = selectedUserIds;
+	}
+
+	
+	
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getUserNm() {
