@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.ant.sample.dao.MemberMapper">
+
+<!-- 회원 가입 -->
+	<insert id="insertMember" parameterType="com.demo.ant.sample.vo.SampleVO">
+		
+		INSERT INTO atworks_user
+		VALUES (#{userId},
+		#{userNm},
+		#{passWd},
+		#{nick},
+		#{email}, 
+		#{phone},
+		default)
+		
+	</insert>
+
+
+<!-- 모든 리스트 가져오기 -->
+
+	<select id="selectMemberBoardList" resultType="com.demo.ant.sample.vo.SampleVO">
+		SELECT USER_ID, USER_NM, PASSWD, NICK, PHONE, EMAIL, GRADE
+		FROM atworks_user
+		ORDER BY USER_ID DESC
+	</select>
+
+
+</mapper>
