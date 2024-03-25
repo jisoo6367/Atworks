@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,5 +34,16 @@ public class SampleController {
 		mv.setViewName("/main/main");
 		return mv;
 	};
+	
+	@GetMapping("/login")
+	public String login() {
+		return "/main/login";
+	}
+	
+	@PostMapping("/check")
+	public @ResponseBody String check(String userNm, String passWd) {
+		System.out.println(userNm);
+		return "왜 오류?";
+	}
 	
 }

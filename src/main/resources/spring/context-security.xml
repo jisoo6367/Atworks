@@ -39,10 +39,15 @@
         
         <!-- 위에서 정의한 패턴을 제외한 모든 경로는 인증된 사용자만 허용 -->
         <!-- <security:intercept-url pattern="/**" access="isAuthenticated()"/> -->
+        
         <security:form-login
                 login-page="${spring.security.login-page-url}"
+                login-processing-url="/login"
                 default-target-url="${spring.security.default-target-url}"
-                authentication-failure-url="${spring.security.authentication-failure-url}"/>
+                authentication-failure-url="${spring.security.authentication-failure-url}"
+                username-parameter="userNm"
+                password-parameter="passWd"
+                />
                 
         <security:logout
                 success-handler-ref="logoutSuccessHandlerComposite"

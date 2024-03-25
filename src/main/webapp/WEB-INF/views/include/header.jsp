@@ -18,7 +18,7 @@
 		</nav>
 		<div class="util_menu">
             <ul>
-				<li class="before_sign"><a href="#">로그인</a></li>
+				<li class="before_sign"><a href="/app/login">로그인</a></li>
 				<li class="before_sign"><a href="/app/member/register">회원가입</a></li>
             </ul>
         </div>

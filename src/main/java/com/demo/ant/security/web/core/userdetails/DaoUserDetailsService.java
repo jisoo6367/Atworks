@@ -11,6 +11,8 @@ public class DaoUserDetailsService implements UserDetailsService, LoginUserDetai
 
     @Override
     public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException {
+    	
+    	
     	return loginUserDetailsService.loadUserByUsername(username);
     }
 }
