@@ -30,7 +30,7 @@
 	    <input type="text" name="nick" placeholder="nick"><br>
 	    <input type="email" name="email" placeholder="Email"><br>
 	    <input type="text" name="phone" placeholder="phone"><br>
-	    <input type="submit" value="가입하기"/>
+	    <button type="submit" class="btn_type1">가입하기</button>
 	</form>
 	
 	</main>

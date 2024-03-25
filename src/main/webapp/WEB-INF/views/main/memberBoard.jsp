@@ -5,6 +5,7 @@
 <html>
 <head>
 	<title>atworks</title>
+
 </head>
 <%@ include file="/WEB-INF/views/include/script.jsp" %>
 
@@ -52,7 +53,8 @@
 			
 			
 		</table>
-		<button type="button" id="btnToDelete">삭제</button> 
+		<br>
+		<button type="button" class="btn_type1" id="btnToDelete">삭제</button> 
 		</form>
 
 

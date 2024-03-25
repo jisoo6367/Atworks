@@ -3,4 +3,43 @@
 <mapper namespace="com.demo.ant.sample.dao.BoardMapper">
 
 
+<!-- 모든 게시물 리스트 가져오기 -->
+	<select id="selectBoardList" resultType="com.demo.ant.sample.vo.BoardVO">
+		SELECT idx, title, content, userId, viewCnt, insertTime, updateTime
+		FROM atworks_board
+		ORDER BY idx DESC
+	</select>
+	
+	
+<!-- idx로 특정 게시물 가져오기 -->
+	<select id="selectBoard" resultType="com.demo.ant.sample.vo.BoardVO" parameterType="int">
+		SELECT idx, title, content, userId, viewCnt, insertTime, updateTime
+		FROM atworks_board
+		WHERE idx = #{idx}
+	</select>
+	
+
+<!-- 게시물 등록 -->
+	<insert id="insertBoard" parameterType="com.demo.ant.sample.vo.BoardVO">
+		insert into atworks_board (title, content, userId, viewCnt, insertTime, updateTime)
+		values(#{title}, #{content}, #{userId}, default, default, null);
+	</insert>
+	
+	
+<!-- 게시글 수정 -->
+	<update id="updateBoard" parameterType="com.demo.ant.sample.vo.BoardVO">
+		UPDATE atworks_board
+		SET title = #{title},
+			content = #{content},
+			updateTime = now()
+		WHERE idx = #{idx}
+	</update>
+	
+	
+<!-- 게시물 삭제(DELETE)-->
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM atworks_board
+		WHERE idx = #{idx}
+	</delete>
+	
 </mapper>

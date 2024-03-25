@@ -74,7 +74,7 @@
 		    		   value="${member.phone }" readonly="readonly">
 			</div>
 		</div><br>
-		<input type="submit" value="정보 수정하기">
+		<input type="submit" class="btn_type1" value="정보 수정하기">
         </form>
 
 
