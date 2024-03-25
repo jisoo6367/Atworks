@@ -23,7 +23,7 @@
 	<h3>회원가입 페이지</h3>
 	<br>
 	
-	<form action="/member/join" method="post">
+	<form action="/app/member/join" method="post">
 	    <input type="text" name="userId" placeholder="userId"><br>
 	    <input type="text" name="userNm" placeholder="userNm"><br>
 	    <input type="password" name="passWd" placeholder="passWd"><br>

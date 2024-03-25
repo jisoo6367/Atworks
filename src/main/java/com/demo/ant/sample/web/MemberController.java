@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.demo.ant.sample.service.MemberService;
-import com.demo.ant.sample.service.SampleService;
 import com.demo.ant.sample.vo.SampleVO;
 @RequestMapping("/member")
 @Controller
@@ -56,7 +56,7 @@ public class MemberController {
 	
 	// 유저 게시판 첫화면 (모든 멤버 정보리스트)
 	@GetMapping(value={"/list"})
-	public ModelAndView showMemberBoard(Model model) throws Exception {
+	public ModelAndView showMemberBoard(Model model, @RequestParam(value = "result", required = false) String result) throws Exception {
 		System.out.println("유저 게시판 컨트롤러==========");
 
 
@@ -64,6 +64,9 @@ public class MemberController {
 		
 		model.addAttribute("memberList",memberList);
 		System.out.println("==========멤버리스트 : " + memberList);
+		
+		model.addAttribute("result", result);
+		System.out.println("======================="+result);
 		
 		
 		ModelAndView mv = new ModelAndView();
@@ -97,14 +100,16 @@ public class MemberController {
 		System.out.println("회원 고유 번호 : " + member.getUserId());
 		System.out.println("수정한 비밀 번호 : " +member.getPassWd());
 		
-		int result = memberService.modifyMember(member);
+		String result = memberService.modifyMember(member);
 		System.out.println("성공 여부 : " + result);
+		rttr.addAttribute("result", result);
 		
-		int userId = member.getUserId();
-		rttr.addAttribute("userId",userId);
+		// detail로 redirect할거면 필요함
+		//int userId = member.getUserId();
+		//rttr.addAttribute("userId", userId);
 		
 		
-		return "redirect:/member/detail";
+		return "redirect:/member/list";
 	}
 	
 	@PostMapping("/delete")

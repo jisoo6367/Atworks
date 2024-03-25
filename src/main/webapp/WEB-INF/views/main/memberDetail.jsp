@@ -26,7 +26,7 @@
 		<h3>유저 디테일</h3>
 		<br>
 		
-        <form id="frmSendValue" method="post" action="/member/modify">
+        <form id="frmSendValue" method="post" action="/app/member/modify">
         
 		<div class="form-group">
 		    <label class="col-sm-2 control-label" style="white-space: nowrap;">고유번호</label>

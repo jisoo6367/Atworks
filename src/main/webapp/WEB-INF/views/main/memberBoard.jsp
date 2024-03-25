@@ -58,6 +58,8 @@
 
 
 
+
+
 	</main>
 </section>
 
@@ -66,11 +68,22 @@
 <script>
 var frmSendValue = $("#frmSendValue");
 
+var result = '<c:out value="${result }"/>';
+console.log(result);
+
+//정보 수정 결과 띄우기
+	if ( result == "1" ) {
+		alert("비밀번호가 수정되었습니다.");
+	}  
+
+
+
+
 
 // 특정 회원 상세 정보 detail로 
 $(".moveDetail").on("click", function(){
 	var userId = $(this).data("userid");
-	var url = "/member/detail?userId=" + encodeURIComponent(userId);
+	var url = "/app/member/detail?userId=" + encodeURIComponent(userId);
 	
 	window.location.href = url;
 });
@@ -103,7 +116,7 @@ $("#btnToDelete").on("click", function(){
     // AJAX 요청
     $.ajax({
         type: "POST",
-        url: "/member/delete",
+        url: "/app/member/delete",
         data: JSON.stringify({ selectedUserIds: selectedUserIds }), // 데이터 전송
         contentType: "application/json",
         success: function(response) {

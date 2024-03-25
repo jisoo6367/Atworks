@@ -18,6 +18,7 @@
 			<list>
 				<value>${mybatis.primary.mapper-locations}</value>
 				<value>classpath:mappers/sample/MemberMapper.xml</value>
+				<value>classpath:mappers/sample/BoardMapper.xml</value>
 			</list>
 		</property>
     </bean>

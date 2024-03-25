@@ -12,7 +12,7 @@ public interface MemberService {
 	
 	public SampleVO getMember(int user_id);
 	
-	public int modifyMember(SampleVO member);
+	public String modifyMember(SampleVO member);
 	
 	public int deleteMember(List<Integer> member);
 }

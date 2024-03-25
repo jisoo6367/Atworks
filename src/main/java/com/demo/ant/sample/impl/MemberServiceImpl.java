@@ -42,10 +42,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int modifyMember(SampleVO member) {
+	public String modifyMember(SampleVO member) {
 		int result = memberMapper.updateMember(member);
 		
-		return result;
+		return (result == 1) ? "1" : "0";
 	}
 	
 
