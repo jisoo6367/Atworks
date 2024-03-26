@@ -10,8 +10,8 @@
 		#{userNm},
 		#{passWd},
 		#{nick},
-		#{email}, 
 		#{phone},
+		#{email}, 
 		default)
 		
 	</insert>

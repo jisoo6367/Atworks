@@ -1,6 +1,14 @@
 package com.demo.ant.sample.vo;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+
 
 public class SampleVO {
 
@@ -10,6 +18,26 @@ public class SampleVO {
 	private		String	nick;
 	private		String	email;
 	private		String	phone;
+	
+	private		String	admin;
+	
+	public String getAdmin() {
+		return admin;
+	}
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
+
+    // 이 메서드는 Collection<? extends GrantedAuthority>를 반환해야 합니다.
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // admin 정보를 이용하여 SimpleGrantedAuthority 객체로 변환하여 authorities에 추가합니다.
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority(admin));
+        // 만약 더 복잡한 권한 처리 로직이 필요하다면 여기에 추가해야 합니다.
+        return authorities;
+    }
+	
+	
 	
 	private List<Integer> selectedUserIds;
 	
